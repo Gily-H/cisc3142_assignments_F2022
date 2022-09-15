@@ -21,5 +21,7 @@ int main() {
 	std::cout << "The second operand is " << v2 << std::endl;
 	std::cout << "The sum of both operands is " << v1 + v2 << std::endl;
 
+	std::cout << std::endl;
+
 	return 0;
 }

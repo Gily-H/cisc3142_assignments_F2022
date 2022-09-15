@@ -3,7 +3,7 @@
  * Write a program that prompts
  * the user for two integers. Print
  * each number in the range specified
- * by those two integers - for-loop
+ * by those two integers - while-loop
  */
 
 #include <iostream>
@@ -32,9 +32,12 @@ int main() {
 
 	// print the range of numbers inclusive
 	std::cout << "Here is the range of numbers" << std::endl;
-	for (int i = start; i <= end; ++i) {
-		std::cout << i << std::endl;
-	}
+  while (start <= end) {
+		std::cout << start << std::endl;
+    start++;
+  }
+
+	std::cout << std::endl;
 
 	return 0;
 }
