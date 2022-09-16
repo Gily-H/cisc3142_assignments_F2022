@@ -3,8 +3,9 @@ LAB2=./lab2/src
 
 #### LAB 1 ####
 lab1: $(LAB1)/hello_world
-	echo "Starting Lab 1 Hellow World Program"
+	$(info "Starting Lab 1 Hello World Program")
 	cd $(LAB1) && ./hello_world
+	make clean_lab1
 
 hello_world: $(LAB1)/hello_world.cpp
 	cd $(LAB1) && g++ -o hello_world hello_world.cpp
@@ -31,7 +32,11 @@ exercise1_11_while_loop: $(LAB2)/exercise1_11_while_loop.cpp
 
 # removes all files that are not source files with extension .cpp
 clean_lab1:
-	cd $(LAB1) && rm -rf hello_world hello_world.o
+	cd $(LAB1) && rm hello_world 
 
 clean_lab2:
-	cd $(LAB2) && rm -rf exercise1_5 exercise1_5.o exercise1_11_for_loop exercise1_11_while_loop exercise1_11_for_loop.o exercise1_11_while_loop.o
+	cd $(LAB2) && rm exercise1_5 exercise1_11_for_loop exercise1_11_while_loop
+
+
+# phony target removes shell command from output
+.SILENT:
