@@ -20,6 +20,9 @@ lab2: $(LAB2)/exercise1_5 $(LAB2)/exercise1_11_for_loop $(LAB2)/exercise1_11_whi
 	cd $(LAB2) && ./exercise1_11_while_loop 
 	make clean_lab2
 
+#### LAB 3 ####
+lab3:
+
 exercise1_5: $(LAB2)/exercise1_5.cpp
 	cd $(LAB2) && g++ -o exercise1_5 exercise1_5.cpp
 
@@ -29,7 +32,6 @@ exercise1_11_for_loop: $(LAB2)/exercise1_11_for_loop.cpp
 exercise1_11_while_loop: $(LAB2)/exercise1_11_while_loop.cpp
 	cd $(LAB2) && g++ -o exercise1_11_while_loop exercise1_11_while_loop.cpp
 
-
 # removes all files that are not source files with extension .cpp
 clean_lab1:
 	cd $(LAB1) && rm hello_world 
@@ -37,6 +39,7 @@ clean_lab1:
 clean_lab2:
 	cd $(LAB2) && rm exercise1_5 exercise1_11_for_loop exercise1_11_while_loop
 
+clean_lab3:
 
 # phony target removes shell command from output
 .SILENT:

@@ -5,10 +5,10 @@ The following are completed lab exercises for course CISC 3142, **Programming Pa
 # Lab Exercises
 
 ### **Pre-requisites**
-Before running individual exercises, it is recommended that you have **g++** (the c++ compiler used for the assignments) and **GNU make** installed on your local machine. 
-Installation information can be found in the `software.txt` file.
+Before running individual exercises, it is recommended that you have `g++` (the c++ compiler used for the assignments) and `GNU make` installed on your local machine. 
+Installation information can be found in the __software.txt__ file.
 
-Download the recommended software and then clone the repository to your local machine.
+Download the recommended software and then _clone_ the repository to your local machine.
 
 ### **Running a lab exercise**
 To run an individual lab exercise, navigate to the root directory of the repository and run the following command, replacing the `<lab-folder>` placeholder with the name of the directory for the exercise that you would like to run.
@@ -37,3 +37,5 @@ make clean_lab1
 make clean_lab2
 ```
 
+_Note: The following labs do not have a runnable program and will exit silently when running the make commmands_
+- lab3
