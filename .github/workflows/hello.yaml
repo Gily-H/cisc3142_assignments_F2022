@@ -4,6 +4,6 @@ jobs:
         HelloWorld:
                 runs-on: ubuntu-latest
                 steps:
-                        - run echo "Running makefile"
+                        - run: echo "Running makefile"
                         - name: make
                           run: make lab1
