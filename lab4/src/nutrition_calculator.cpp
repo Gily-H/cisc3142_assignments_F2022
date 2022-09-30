@@ -31,7 +31,7 @@ void calculate_lethal_dose() {
 
   bool start_again = true; // keep looping until user exits program
   string confirm; // confirm whether user wants to rerun or quit program
-  double desired_weight; // user-inputted desired weight after dieting
+  int desired_weight; // user-inputted desired weight after dieting
   double weight_in_grams; // desired weight converted to grams
   double person_lethal; // lethal amount of sweetener in grams for desired weight
   double soda_lethal; // lethal amount of soda in grams
@@ -42,7 +42,7 @@ void calculate_lethal_dose() {
     cout << "Please enter your desired weight:" << endl;
     cin >> desired_weight;
     // convert the desired weight into grams based on hundred-pound person ratio
-    weight_in_grams = (desired_weight / 100) * person_mass;
+    weight_in_grams = (desired_weight *person_mass) / 100;
     // calculate lethal dose of sweetener in grams needed for person, based on mouse lethal proportion
     person_lethal = weight_in_grams * mouse_lethal;
     // find lethal dose in grams of soda
