@@ -84,20 +84,26 @@ all: lab1 lab2 lab3 lab4
 ci_cd_workflow:
 	make lab1
 	echo "Starting Lab 2 Exercise 1.5"
+	echo "Input file for exercise 1.5 can be found at $(LAB2_DIR)/input/exercise1_5.txt"
 	make exercise1_5 && $(LAB2_DIR)/exercise1_5 < $(LAB2_DIR)/input/exercise1_5.txt
 	echo "Starting Lab 2 Exercise 1.11 - for-loop"
+	echo "Input file for exercise 1.11-for can be found at $(LAB2_DIR)/input/exercise1_11_for.txt"
 	make exercise1_11_for_loop && $(LAB2_DIR)/exercise1_11_for_loop < $(LAB2_DIR)/input/exercise1_11_for.txt
 	echo "Starting Lab 2 Exercise 1.11 - while-loop"
+	echo "Input file for exercise 1.11-while can be found at $(LAB2_DIR)/input/exercise1_11_while.txt"
 	make exercise1_11_while_loop && $(LAB2_DIR)/exercise1_11_while_loop < $(LAB2_DIR)/input/exercise1_11_while.txt
 	make clean_lab2
 	echo "Starting lab 4 exercise 3.17"
+	echo "Input file for exercise 3.17 can be found at $(LAB2_DIR)/input/exercise3_17.txt"
 	make exercise3_17 && $(LAB4_DIR)/exercise3_17 < $(LAB4_DIR)/input/exercise3_17.txt
 	echo "Starting lab 4 exercise 3.23"
 	make exercise3_23 && $(LAB4_DIR)/exercise3_23
 	echo "Starting lab 4 exercise 4.28"
 	make exercise4_28 && $(LAB4_DIR)/exercise4_28
 	echo "Starting lab 4 inflation"
+	echo "Input file for exercise inflation can be found at $(LAB2_DIR)/input/inflation.txt"
 	make inflation && $(LAB4_DIR)/inflation < $(LAB4_DIR)/input/inflation.txt
 	echo "Starting lab 4 nutrition calculator"
+	echo "Input file for exercise nutrition_calculator can be found at $(LAB2_DIR)/input/nutrition_calculator.txt"
 	make nutrition_calculator && $(LAB4_DIR)/nutrition_calculator < $(LAB4_DIR)/input/nutrition_calculator.txt
 	make clean_lab4
