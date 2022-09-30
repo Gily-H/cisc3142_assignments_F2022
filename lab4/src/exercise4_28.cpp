@@ -22,6 +22,8 @@ void size_of_types() {
   cout << "Size of double: " << sizeof(double) << " byte(s)" << endl;
   cout << "Size of long long: " << sizeof(long long) << " byte(s)" << endl;
   cout << "Size of long double: " << sizeof(long double) << " byte(s)" << endl;
+  cout << "----------------------------------" << endl;
+  cout << endl;
 }
 
 int main() {

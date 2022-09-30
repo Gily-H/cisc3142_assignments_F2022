@@ -32,6 +32,8 @@ void multiply_by_two() {
   }
 
   cout << endl;
+  cout << "----------------------------------" << endl;
+  cout << endl;
 }
 
 int main() {

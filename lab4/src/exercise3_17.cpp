@@ -22,14 +22,18 @@ void to_uppercase_words() {
   // declare a string type to hold the input
   string word;
 
-  cout << "Enter a sequence of words, one word at a time" << endl;
+  cout << "Enter a sequence of words. Enter (q) to quit" << endl;
   // while (there is input to read)
   while (cin >> word) {
+    if (word == "q") {
+      break;
+    }
     // append word to end of vector
     sequence.push_back(word);
   }
 
-  cout << "Modifying the words to uppercase" << endl;
+  cout << endl;
+  cout << "Modifying the words to uppercase..." << endl;
   // for each string in the vector
   for (auto it = sequence.begin(); it != sequence.end(); ++it)
     // for each char in the string
@@ -53,6 +57,8 @@ void to_uppercase_words() {
     }
   }
 
+  cout << endl;
+  cout << "----------------------------------" << endl;
   cout << endl;
 }
 

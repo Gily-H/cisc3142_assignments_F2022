@@ -50,6 +50,7 @@ void calculate_lethal_dose() {
     // find lethal dose in cans of soda
     soda_cans = soda_lethal / soda_mass;
 
+    cout << endl; 
     cout << "Lethal dose of sweetener for " << desired_weight << "lbs person: " << person_lethal << "grams of sweetener" << endl;
     cout << setprecision(2) << fixed << "You would need to drink about " << soda_cans << " cans or about " << soda_lethal << " grams of soda before you would die trying to diet to " << desired_weight << "lbs" << endl;
 
@@ -59,9 +60,12 @@ void calculate_lethal_dose() {
     cout << "Would you like to enter a new weight? (Y / n)" << endl;
     while (cin >> confirm) {
       if (confirm == "Y") {
+        cout << endl;
         break;
       } else if (confirm == "n") {
         start_again = false;
+        cout << "----------------------------------" << endl;
+        cout << endl;
         break;
       } else {
         cout << "Would you like to enter a new weight? (Y / n)" << endl;
