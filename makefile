@@ -18,7 +18,7 @@ lab2: $(LAB2_DIR)/exercise1_5 $(LAB2_DIR)/exercise1_11_for_loop $(LAB2_DIR)/exer
 	echo "Starting Lab 2 Exercise 1.11 - for-loop"
 	$(LAB2_DIR)/exercise1_11_for_loop
 	echo "Starting Lab 2 Exercise 1.11 - while-loop"
-	$(LAB2_DIR)/exercise1_11_while_loop 
+	$(LAB2_DIR)/exercise1_11_while_loop
 	make clean_lab2
 
 exercise1_5: $(LAB2_DIR)/exercise1_5.cpp
@@ -79,3 +79,25 @@ clean_lab4:
 .SILENT:
 
 all: lab1 lab2 lab3 lab4
+
+# target for running the CI/CD workflow in GitHub actions
+ci_cd_workflow:
+	make lab1
+	echo "Starting Lab 2 Exercise 1.5"
+	make exercise1_5 && $(LAB2_DIR)/exercise1_5 < $(LAB2_DIR)/input/exercise1_5.txt
+	echo "Starting Lab 2 Exercise 1.11 - for-loop"
+	make exercise1_11_for_loop && $(LAB2_DIR)/exercise1_11_for_loop < $(LAB2_DIR)/input/exercise1_11_for.txt
+	echo "Starting Lab 2 Exercise 1.11 - while-loop"
+	make exercise1_11_while_loop && $(LAB2_DIR)/exercise1_11_while_loop < $(LAB2_DIR)/input/exercise1_11_while.txt
+	make clean_lab2
+	echo "Starting lab 4 exercise 3.17"
+	make exercise3_17 && $(LAB4_DIR)/exercise3_17 < $(LAB4_DIR)/input/exercise3_17.txt
+	echo "Starting lab 4 exercise 3.23"
+	make exercise3_23 && $(LAB4_DIR)/exercise3_23
+	echo "Starting lab 4 exercise 4.28"
+	make exercise4_28 && $(LAB4_DIR)/exercise4_28
+	echo "Starting lab 4 inflation"
+	make inflation && $(LAB4_DIR)/inflation < $(LAB4_DIR)/input/inflation.txt
+	echo "Starting lab 4 nutrition calculator"
+	make nutrition_calculator && $(LAB4_DIR)/nutrition_calculator < $(LAB4_DIR)/input/nutrition_calculator.txt
+	make clean_lab4
