@@ -1,26 +1,39 @@
+/*
+ * Program to create a vector of ten ints
+ * Double the values in the int vector
+ */
+
 #include <iostream>
-#include <string>
 #include <vector>
 
-using std::string;
-using std::vector;
 using std::cin;
 using std::cout;
 using std::endl;
+using std::vector;
 
 void multiply_by_two() {
-  // initialize an int vector that can hold 10 ints, default value 0
-  vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  // initialize an int vector that can hold ten ints
+  vector<int> nums = {12, 27, 3, 74, 25, 16, 7, 88, 89, 11};
 
-  // get the starting iterator and the end iterator of the nums vector
-  auto iter1 = nums.begin();
-  auto iter2 = nums.end();
-
+  cout << "These are the current values in the vector" << endl;
   // for (while iter1 != iter2; ++iter1)
-    // dereference iter1 = *iter1 * 2
+  for (auto it = nums.begin(); it != nums.end(); ++it) {
+    // print the current value in vector
+    cout << *it << " ";
+    // double the value
+    *it = *it * 2;
+  }
+  cout << endl;
 
-  // for (int in nums)
-    // print the updated value
+  cout << "These are the values in the vector doubled" << endl;
+  // print out the modified values in the vector
+  for (auto it = nums.begin(); it != nums.end(); ++it) {
+    cout << *it << " ";
+  }
+
+  cout << endl;
+  cout << "----------------------------------" << endl;
+  cout << endl;
 }
 
 int main() {
