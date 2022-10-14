@@ -33,7 +33,7 @@ void to_uppercase_words() {
   }
 
   cout << endl;
-  cout << "Modifying the words to uppercase..." << endl;
+  cout << "Modifying the words to uppercase...\n" << endl;
   // for each string in the vector
   for (auto it = sequence.begin(); it != sequence.end(); ++it)
     // for each char in the string
@@ -57,12 +57,11 @@ void to_uppercase_words() {
     }
   }
 
-  cout << endl;
-  cout << "----------------------------------" << endl;
-  cout << endl;
+  cout << "\n---------------------------------" << endl;
 }
 
 int main() {
+  cout << "Starting lab 4 exercise 3.17\n" << endl;
   to_uppercase_words();
   return 0;
 }

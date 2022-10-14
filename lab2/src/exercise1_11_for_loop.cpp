@@ -9,9 +9,9 @@
 #include <iostream>
 
 int main() {
+	std::cout << "Starting Lab 2 Exercise 1.11 - for-loop\n" << std::endl;
 	int num_one = 0;
 	int num_two = 0;
-	
 	std::cout << "Please enter two numbers to see the range of numbers inbetween:" << std::endl;
 	std::cin >> num_one >> num_two;
 
@@ -36,7 +36,6 @@ int main() {
 		std::cout << i << std::endl;
 	}
 
-	std::cout << std::endl;
-
+	std::cout << "---------------------------------" << std::endl;
 	return 0;
 }

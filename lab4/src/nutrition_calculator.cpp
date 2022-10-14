@@ -64,8 +64,7 @@ void calculate_lethal_dose() {
         break;
       } else if (confirm == "n") {
         start_again = false;
-        cout << "----------------------------------" << endl;
-        cout << endl;
+        cout << "---------------------------------" << endl;
         break;
       } else {
         cout << "Would you like to enter a new weight? (Y / n)" << endl;
@@ -75,6 +74,7 @@ void calculate_lethal_dose() {
 }
 
 int main() {
+  cout << "Starting lab 4 nutrition calculator\n" << endl;
   calculate_lethal_dose();
   return 0;
 }

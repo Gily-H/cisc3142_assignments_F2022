@@ -9,6 +9,7 @@
 #include <iostream>
 
 int main() {
+	std::cout << "Starting Lab 2 Exercise 1.11 - while-loop\n" << std::endl;
 	int num_one = 0;
 	int num_two = 0;
 	
@@ -37,7 +38,6 @@ int main() {
     start++;
   }
 
-	std::cout << std::endl;
-
+	std::cout << "---------------------------------" << std::endl;
 	return 0;
 }

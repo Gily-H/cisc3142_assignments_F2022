@@ -31,12 +31,11 @@ void multiply_by_two() {
     cout << *it << " ";
   }
 
-  cout << endl;
-  cout << "----------------------------------" << endl;
-  cout << endl;
+  cout << "\n---------------------------------" << endl;
 }
 
 int main() {
+  cout << "Starting lab 4 exercise 3.23\n" << endl;
   multiply_by_two();
   return 0;
 }

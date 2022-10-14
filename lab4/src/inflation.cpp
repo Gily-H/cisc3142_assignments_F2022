@@ -44,10 +44,10 @@ double price_after_inflation() {
 }
 
 int main() {
+  cout << "Starting lab 4 inflation\n" << endl;
   double updated_cost = price_after_inflation();
   cout << endl;
   cout << setprecision(2) << fixed << "Cost after inflation: $" << updated_cost << endl;
-  cout << "----------------------------------" << endl;
-  cout << endl;
+  cout << "---------------------------------" << endl;
   return 0;
 }
