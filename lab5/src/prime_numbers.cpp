@@ -20,6 +20,7 @@ bool check_if_prime(int val) {
 }
 
 int main() {
+  cout << "Starting Lab 5 Practice Problem: Prime Numbers\n" << endl;
   cout << "These are all the prime numbers between 3 and 100 inclusive" << endl;
   for (int i = 3; i <= 100; ++i) {
     // check if the current number is prime
@@ -28,5 +29,5 @@ int main() {
     }
   }
 
-  cout << endl;
+  cout << "\n---------------------------------" << endl;
 }

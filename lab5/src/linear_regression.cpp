@@ -92,7 +92,7 @@ void output_coordinates(vector<double> x_vals, vector<double> y_vals) {
 }
 
 int main() {
-  cout << "Starting Practice Problem: Linear Regression" << endl << endl;
+  cout << "Starting Lab 5 Practice Problem: Linear Regression\n" << endl;
 
   // vectors to hold the x-coords and y-coords separately
   vector<double> x_coordinates;
@@ -146,6 +146,6 @@ int main() {
   // output the linear regression for the given graph
   cout << endl;
   linear_regression(slope, intercept);
-
+  cout << "---------------------------------" << endl;
   return 0;
 }

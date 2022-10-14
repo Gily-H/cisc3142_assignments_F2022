@@ -6,6 +6,7 @@ using namespace std;
 /*
  * Program to calculate the sum of the digits of a user-given number
  * Assumes input will be an unsigned whole integer value
+ * Example: given input 123456789 --> output should be 45
  */
 
 // helper method to convert char representing digit into an int value
@@ -48,6 +49,7 @@ int convert_to_num(char num_to_convert) {
 }
 
 int main() {
+  cout << "Starting Lab 5 Practice Problem: Sum of Digits\n" << endl;
   // string variable to hold the user-inputted number
   string input;
 
@@ -55,7 +57,7 @@ int main() {
   cin >> input;
 
   cout << "The following number was provided: " << input << endl;
-  cout << "The sum of the following digits ";
+  cout << "The sum of the following digits: ";
   int sum = 0;
   // iterate through the elements of the string and get the int conversion
   for (char elem : input) {
@@ -64,9 +66,8 @@ int main() {
     cout << num << " "; // print out the digit
   }
 
-  cout << endl;
   // output the sum of the digits
-  cout << "is " << sum << endl;
-  cout << endl;
+  cout << "is ---> " << sum << endl;
+  cout << "---------------------------------" << endl;
   return 0;
 }
