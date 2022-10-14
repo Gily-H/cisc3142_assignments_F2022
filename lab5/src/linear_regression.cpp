@@ -102,16 +102,16 @@ int main() {
   cout << "Reading graph data from file: linear_regression_input.txt" << endl;
 
   ifstream ifs; // input stream object
-  ifs.open("./linear_regression_input1.txt", ifstream::in); // open the file for reading
+  ifs.open("lab5/src/input/linear_regression_input1.txt"); // open the file for reading
   // loop until end of file
-  while (ifs.good()) { 
+  while (ifs) { 
     double x;
     double y;
 
     // read the coord pair
     ifs >> x;
     ifs >> y;
-    
+
     // append coord to corresponding vector
     x_coordinates.push_back(x);
     y_coordinates.push_back(y);
