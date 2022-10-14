@@ -70,9 +70,12 @@ nutrition_calculator: $(LAB4_DIR)/nutrition_calculator.cpp
 
 ####################### LAB 5 #######################
 lab5: $(LAB5_DIR)/sum_of_digits $(LAB5_DIR)/prime_numbers $(LAB5_DIR)/linear_regression
-	$(LAB4_DIR)/sum_of_digits
-	$(LAB4_DIR)/prime_numbers
-	$(LAB4_DIR)/linear_regression
+	echo "Starting Lab 5 Textbook Exercises"
+	cat ./lab5/lab5_answers.md
+	$(LAB5_DIR)/sum_of_digits
+	$(LAB5_DIR)/prime_numbers
+	$(LAB5_DIR)/linear_regression
+	make clean_lab5
 
 sum_of_digits: $(LAB5_DIR)/sum_of_digits.cpp
 	g++ $(LAB5_DIR)/sum_of_digits.cpp -o $(LAB5_DIR)/sum_of_digits
