@@ -108,7 +108,7 @@ clean_lab4:
 clean_lab5:
 	rm $(LAB5_DIR)/sum_of_digits $(LAB5_DIR)/prime_numbers $(LAB5_DIR)/linear_regression
 
-clean_lab5:
+clean_lab7:
 	rm $(LAB7_DIR)/rectangle $(LAB7_DIR)/sample
 
 # phony target removes shell command from output
