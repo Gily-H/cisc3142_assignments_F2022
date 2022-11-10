@@ -2,7 +2,7 @@ LAB1_DIR=./lab1/src
 LAB2_DIR=./lab2/src
 LAB4_DIR=./lab4/src
 LAB5_DIR=./lab5/src
-
+LAB7_DIR=./lab7/src
 
 ####################### LAB 1 #######################
 
@@ -79,6 +79,19 @@ prime_numbers: $(LAB5_DIR)/prime_numbers.cpp
 linear_regression: $(LAB5_DIR)/linear_regression.cpp
 	g++ $(LAB5_DIR)/linear_regression.cpp -o $(LAB5_DIR)/linear_regression
 	
+####################### LAB 7 #######################
+lab7: $(LAB7_DIR)/rectangle $(LAB7_DIR)/sample
+	echo "Starting Lab 7"
+	cat ./lab7/struct_output.md
+	$(LAB7_DIR)/rectangle
+	$(LAB7_DIR)/sample
+	
+rectangle: $(LAB7_DIR)/rectangle.cpp
+	g++ $(LAB7_DIR)/rectangle.cpp -o $(LAB7_DIR)/rectangle
+
+sample: $(LAB7_DIR)/sample.cpp
+	g++ $(LAB7_DIR)/sample.cpp -o $(LAB7_DIR)/sample
+
 # removes all files that are not source files with extension .cpp
 clean_lab1:
 	rm $(LAB1_DIR)/hello_world 
@@ -95,10 +108,13 @@ clean_lab4:
 clean_lab5:
 	rm $(LAB5_DIR)/sum_of_digits $(LAB5_DIR)/prime_numbers $(LAB5_DIR)/linear_regression
 
+clean_lab5:
+	rm $(LAB7_DIR)/rectangle $(LAB7_DIR)/sample
+
 # phony target removes shell command from output
 .SILENT:
 
-all: lab1 lab2 lab3 lab4 lab5
+all: lab1 lab2 lab3 lab4 lab5 lab7
 
 # target for running the CI/CD workflow in GitHub actions
 ci_cd_workflow:
@@ -127,3 +143,6 @@ ci_cd_workflow:
 	make prime_numbers && $(LAB5_DIR)/prime_numbers
 	make linear_regression && $(LAB5_DIR)/linear_regression
 	make clean_lab5
+	make rectangle && $(LAB7_DIR)/rectangle
+	make sample && $(LAB7_DIR)/sample
+	make clean_lab7
