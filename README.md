@@ -38,6 +38,5 @@ make clean_lab2
 ```
 
 _Note: The following labs do not have a runnable program and will exit silently when running the make commmands_
-- lab3
 - lab6
 - lab8
