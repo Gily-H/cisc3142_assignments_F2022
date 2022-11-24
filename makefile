@@ -101,7 +101,7 @@ lab9: $(LAB9_DIR)/weather
 	make clean_lab9
 
 weather: $(LAB9_DIR)/weather_forecast.cpp
-	g++ $(LAB9_DIR)/weather_forecast -o $(LAB9_DIR)/weather
+	g++ $(LAB9_DIR)/weather_forecast.cpp -o $(LAB9_DIR)/weather
 
 # removes all files that are not source files with extension .cpp
 clean_lab1:
