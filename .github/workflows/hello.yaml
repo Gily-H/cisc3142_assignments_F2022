@@ -5,27 +5,27 @@ jobs:
                 runs-on: ubuntu-latest
                 steps:
                         - uses: actions/checkout@v3
-                        
+
                         - name: Running All Lab Exercises
                           run: make ci_cd_workflow
 
                         - name: Running Lab 1
-                        - run: make lab1
+                          run: make lab1
 
                         - name: Running Lab 2
-                        - run: make lab2
+                          run: make lab2
 
                         - name: Running Lab 3
-                        - run: make lab3
+                          run: make lab3
 
                         - name: Running Lab 4
-                        - run: make lab4
+                          run: make lab4
 
                         - name: Running Lab 5
-                        - run: make lab5
+                          run: make lab5
 
                         - name: Running Lab 7
-                        - run: make lab7
+                          run: make lab7
 
                         - name: Running Lab 9
-                        - run: make lab9
+                          run: make lab9
