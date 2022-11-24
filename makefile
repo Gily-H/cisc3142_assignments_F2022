@@ -100,8 +100,8 @@ lab9: $(LAB9_DIR)/weather
 	$(LAB9_DIR)/weather
 	make clean_lab9
 
-weather: $(LAB9_DIR)/weather_forecast.cpp
-	g++ $(LAB9_DIR)/weather_forecast.cpp -o $(LAB9_DIR)/weather
+weather: $(LAB9_DIR)/weather.cpp
+	g++ $(LAB9_DIR)/weather.cpp -o $(LAB9_DIR)/weather
 
 # removes all files that are not source files with extension .cpp
 clean_lab1:
@@ -132,7 +132,7 @@ clean_lab9:
 # phony target removes shell command from output
 .SILENT:
 
-all: lab1 lab2 lab3 lab4 lab5 lab7
+all: lab1 lab2 lab3 lab4 lab5 lab7 lab9
 
 # target for running the CI/CD workflow in GitHub actions
 ci_cd_workflow:

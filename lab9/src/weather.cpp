@@ -138,7 +138,7 @@ int main() {
   vector<Weather> weather_records;
 
   ifstream ifs; 
-  ifs.open("weather.csv");
+  ifs.open("lab9/src/input/weather.csv");
   // read one line to move past the column headings
   if (ifs.good()) {
     string line;
