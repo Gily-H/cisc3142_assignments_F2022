@@ -3,6 +3,7 @@ LAB2_DIR=./lab2/src
 LAB4_DIR=./lab4/src
 LAB5_DIR=./lab5/src
 LAB7_DIR=./lab7/src
+LAB9_DIR=./lab9/src
 
 ####################### LAB 1 #######################
 
@@ -85,12 +86,22 @@ lab7: $(LAB7_DIR)/rectangle $(LAB7_DIR)/sample
 	cat ./lab7/struct_output.md
 	$(LAB7_DIR)/rectangle
 	$(LAB7_DIR)/sample
+	make clean_lab7
 	
 rectangle: $(LAB7_DIR)/rectangle.cpp
 	g++ $(LAB7_DIR)/rectangle.cpp -o $(LAB7_DIR)/rectangle
 
 sample: $(LAB7_DIR)/sample.cpp
 	g++ $(LAB7_DIR)/sample.cpp -o $(LAB7_DIR)/sample
+
+####################### LAB 9 #######################
+lab9: $(LAB9_DIR)/weather
+	echo "Starting lab 9"
+	$(LAB9_DIR)/weather
+	make clean_lab9
+
+weather: $(LAB9_DIR)/weather_forecast.cpp
+	g++ $(LAB9_DIR)/weather_forecast -o $(LAB9_DIR)/weather
 
 # removes all files that are not source files with extension .cpp
 clean_lab1:
@@ -108,8 +119,15 @@ clean_lab4:
 clean_lab5:
 	rm $(LAB5_DIR)/sum_of_digits $(LAB5_DIR)/prime_numbers $(LAB5_DIR)/linear_regression
 
+clean_lab6:
+
 clean_lab7:
 	rm $(LAB7_DIR)/rectangle $(LAB7_DIR)/sample
+
+clean_lab8:
+
+clean_lab9:
+	rm $(LAB9_DIR)/weather
 
 # phony target removes shell command from output
 .SILENT:
@@ -146,3 +164,5 @@ ci_cd_workflow:
 	make rectangle && $(LAB7_DIR)/rectangle
 	make sample && $(LAB7_DIR)/sample
 	make clean_lab7
+	make weather && $(LAB9_DIR)/weather
+	make clean_lab9
