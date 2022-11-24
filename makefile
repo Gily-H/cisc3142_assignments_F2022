@@ -146,6 +146,7 @@ ci_cd_workflow:
 	make clean_lab2
 	echo "Starting Lab 3 Textbook Exercises"
 	cat ./lab3/exercise-answers.md
+	echo "Starting Lab 4"
 	echo "Input file for exercise 3.17 can be found at $(LAB2_DIR)/input/exercise3_17.txt"
 	make exercise3_17 && $(LAB4_DIR)/exercise3_17 < $(LAB4_DIR)/input/exercise3_17.txt
 	make exercise3_23 && $(LAB4_DIR)/exercise3_23
@@ -161,8 +162,55 @@ ci_cd_workflow:
 	make prime_numbers && $(LAB5_DIR)/prime_numbers
 	make linear_regression && $(LAB5_DIR)/linear_regression
 	make clean_lab5
+	echo "Starting Lab 7"
 	make rectangle && $(LAB7_DIR)/rectangle
 	make sample && $(LAB7_DIR)/sample
 	make clean_lab7
+	echo "Starting Lab 9"
 	make weather && $(LAB9_DIR)/weather
 	make clean_lab9
+
+################ GITHUB ACTIONS ################
+cicd_lab1:
+	make lab1
+	
+cicd_lab2:
+	echo "Starting Lab 2"
+	echo "Input file for exercise 1.5 can be found at $(LAB2_DIR)/input/exercise1_5.txt"
+	make exercise1_5 && $(LAB2_DIR)/exercise1_5 < $(LAB2_DIR)/input/exercise1_5.txt
+	echo "Input file for exercise 1.11-for can be found at $(LAB2_DIR)/input/exercise1_11_for.txt"
+	make exercise1_11_for_loop && $(LAB2_DIR)/exercise1_11_for_loop < $(LAB2_DIR)/input/exercise1_11_for.txt
+	echo "Input file for exercise 1.11-while can be found at $(LAB2_DIR)/input/exercise1_11_while.txt"
+	make exercise1_11_while_loop && $(LAB2_DIR)/exercise1_11_while_loop < $(LAB2_DIR)/input/exercise1_11_while.txt
+	make clean_lab2
+
+cicd_lab3:
+	make lab3
+
+cicd_lab4:
+	echo "Starting Lab 4"
+	echo "Input file for exercise 3.17 can be found at $(LAB2_DIR)/input/exercise3_17.txt"
+	make exercise3_17 && $(LAB4_DIR)/exercise3_17 < $(LAB4_DIR)/input/exercise3_17.txt
+	make exercise3_23 && $(LAB4_DIR)/exercise3_23
+	make exercise4_28 && $(LAB4_DIR)/exercise4_28
+	echo "Input file for exercise inflation can be found at $(LAB2_DIR)/input/inflation.txt"
+	make inflation && $(LAB4_DIR)/inflation < $(LAB4_DIR)/input/inflation.txt
+	echo "Input file for exercise nutrition_calculator can be found at $(LAB2_DIR)/input/nutrition_calculator.txt"
+	make nutrition_calculator && $(LAB4_DIR)/nutrition_calculator < $(LAB4_DIR)/input/nutrition_calculator.txt
+	make clean_lab4
+
+cicd_lab5:
+	echo "Starting Lab 5 Textbook Exercises"
+	cat ./lab5/lab5_answers.md
+	make sum_of_digits && $(LAB5_DIR)/sum_of_digits < $(LAB5_DIR)/input/sum_of_digits_input.txt
+	make prime_numbers && $(LAB5_DIR)/prime_numbers
+	make linear_regression && $(LAB5_DIR)/linear_regression
+	make clean_lab5
+
+cicd_lab7:
+	echo "Starting Lab 7"
+	make lab7
+
+cicd_lab9:
+	echo "Starting Lab 9"
+	make lab9
