@@ -63,14 +63,14 @@ int find_total_duration(vector<Film> films) {
 
 // helper function to be used in sort() call
 // returns a boolean result from the comparison between the two params
-bool sorter_helper(Film one, Film two) {
+bool sort_helper(Film one, Film two) {
   return one.popularity > two.popularity;
 }
 
 // method to sort the list of films by their popularity rating - highest --> lowest
 // pass by reference the list of films
 void sort_by_popularity(vector<Film> &films) {
-  sort(films.begin(), films.end(), sorter_helper);
+  sort(films.begin(), films.end(), sort_helper);
 }
 
 // method to find the first occurrence of a given value in the given film category
@@ -95,10 +95,53 @@ Film find_first_occurrence(vector<Film> films, string category, string value) {
   return film;
 }
 
+// helper function to be used in unique() call
+// returns boolean result when comparing if two param values are equal 
+bool unique_helper(Film one, Film two) {
+  return one.year == two.year;
+}
+
 // method to compare the unique release dates between action and comedy films
-vector<string> compare_unique_release_dates(vector<Film> films) {
-  vector<string> unique_release_dates;
-  return unique_release_dates;
+bool compare_unique_release_dates(vector<Film> films) {
+  vector<Film> comedies;
+  vector<Film> actions;
+
+  // filter the films by actions and comedies
+  for (Film &film: films) {
+    string subject = film.data["subject"];
+    if (subject == "Comedy") {
+      comedies.push_back(film);
+    } else if (subject == "Action") {
+      actions.push_back(film);
+    }
+  }
+
+  // sort the comedies and actions before finding unique values
+  sort(comedies.begin(), comedies.end(), [](Film one, Film two) {
+    return one.year > two.year;
+  });
+  sort(actions.begin(), actions.end(), [](Film one, Film two) {
+    return one.year > two.year;
+  });
+
+  // find unique release years for comedies and erase any duplicate years
+  auto com_it = unique(comedies.begin(), comedies.end(), unique_helper);
+  comedies.erase(com_it, comedies.end());
+
+  // find unique release years for actions and erase any duplicate years
+  auto act_it = unique(actions.begin(), actions.end(), unique_helper);
+  actions.erase(act_it, actions.end());
+
+  // compare the unique lists of years to see if they are equal
+  // equal() assumes the second list is as large as the first list
+  bool is_equal;
+  if (comedies.size() >= actions.size()) {
+    is_equal = equal(comedies.begin(), comedies.end(), actions.begin(), unique_helper);
+  } else {
+    is_equal = equal(actions.begin(), actions.end(), comedies.begin(), unique_helper);
+  }
+
+  return is_equal;
 }
 
 int main() {
@@ -166,6 +209,7 @@ int main() {
 
   cout << "\n===============================================\n" << endl;
 
+  // search in film data
   string film_category;
   string value_to_search;
   Film found_film;
@@ -193,14 +237,16 @@ int main() {
        << "Starring" << endl
        << found_film.data["actor"] << " and " << found_film.data["actress"] << endl
        << "Rating: " << found_film.popularity << endl;
-
-  cout << "\nFound value: " << value_to_search << ", in category: " << film_category << ", for film: " << endl;
-      cout << "------------------------------------------" << endl;
-      cout << found_film.data["title"] << " (" << found_film.year << ") " << found_film.length << " mins" << endl << "Directed by " << found_film.data["director"] << endl << "Starring" << endl << found_film.data["actor"] << " and " << found_film.data["actress"] << endl << "Rating: " << found_film.popularity << endl;
   cout << "\n===============================================\n" << endl;
   
   // compare unqiue release years between action films and comedy films
-  compare_unique_release_dates(films);
+  bool identical_releases;
+  identical_releases = compare_unique_release_dates(films);
+  if (identical_releases) {
+    cout << "Action and Comedy films have identical release years";
+  }
+  
+  cout << "Action and Comedy films do not have identical release years" << endl;
   cout << "\n===============================================\n" << endl;
 
   return 0;
