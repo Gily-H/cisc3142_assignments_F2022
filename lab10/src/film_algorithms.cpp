@@ -80,9 +80,15 @@ Film find_first_occurrence(vector<Film> films, string category, string value) {
   for (Film &film : films) {
     values.push_back(film.data[category]);
   }
-  
+
   // find the desired value in the collected list of values
   auto it = find(values.begin(), values.end(), value);
+  if (it == values.end()) {
+    // return empty Film object if no match found for desired value
+    Film empty_film = Film{};
+    return empty_film;
+  }
+
   // find the index of the film with the associated found value
   auto film_index = it - values.begin();
   Film film = films[film_index];
@@ -90,7 +96,10 @@ Film find_first_occurrence(vector<Film> films, string category, string value) {
 }
 
 // method to compare the unique release dates between action and comedy films
-void compare_unique_release_dates() {}
+vector<string> compare_unique_release_dates(vector<Film> films) {
+  vector<string> unique_release_dates;
+  return unique_release_dates;
+}
 
 int main() {
   vector<Film> films;
@@ -157,23 +166,42 @@ int main() {
 
   cout << "\n===============================================\n" << endl;
 
-  // prompt user for a film category to search the value
   string film_category;
-  cout << "Enter a film category to search in:" << endl;
-  getline(cin, film_category);
-
-  // prompt user for a value to search
   string value_to_search;
-  cout << "\nEnter a value to search:" << endl;
-  getline(cin, value_to_search);
+  Film found_film;
+  
+  do {
+    // prompt user for a film category to search the value
+    cout << "Enter a film category to search in:" << endl;
+    getline(cin, film_category);
 
-  Film found_film = find_first_occurrence(films, lower_case(film_category), value_to_search);
+    // prompt user for a value to search
+    cout << "\nEnter a value to search:" << endl;
+    getline(cin, value_to_search);
+
+    found_film = find_first_occurrence(films, lower_case(film_category), value_to_search);
+    if (found_film.data.empty()) {
+      cout << "\n**Unable to find desired search value. Please try again.**\n" << endl;
+    }
+
+  } while (found_film.data.empty()); // repeat until match found for desired search value
+
   cout << "\nFound value: " << value_to_search << ", in category: " << film_category << ", for film: " << endl;
   cout << "------------------------------------------" << endl;
-  cout << found_film.data["title"] << " (" << found_film.year << ") " << found_film.length << " mins" << endl << "Directed by " << found_film.data["director"] << endl << "Starring" << endl << found_film.data["actor"] << " and " << found_film.data["actress"] << endl << "Rating: " << found_film.popularity << endl;
+  cout << found_film.data["title"] << " (" << found_film.year << ") " << found_film.length << " mins" << endl
+       << "Directed by " << found_film.data["director"] << endl
+       << "Starring" << endl
+       << found_film.data["actor"] << " and " << found_film.data["actress"] << endl
+       << "Rating: " << found_film.popularity << endl;
 
+  cout << "\nFound value: " << value_to_search << ", in category: " << film_category << ", for film: " << endl;
+      cout << "------------------------------------------" << endl;
+      cout << found_film.data["title"] << " (" << found_film.year << ") " << found_film.length << " mins" << endl << "Directed by " << found_film.data["director"] << endl << "Starring" << endl << found_film.data["actor"] << " and " << found_film.data["actress"] << endl << "Rating: " << found_film.popularity << endl;
   cout << "\n===============================================\n" << endl;
-  // compare_unique_release_dates();
+  
+  // compare unqiue release years between action films and comedy films
+  compare_unique_release_dates(films);
+  cout << "\n===============================================\n" << endl;
 
   return 0;
 }
