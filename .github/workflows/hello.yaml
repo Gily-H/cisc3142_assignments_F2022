@@ -29,3 +29,6 @@ jobs:
 
                         - name: Running Lab 9
                           run: make cicd_lab9
+
+                        - name: Running Lab 10
+                          run: make cicd_lab10

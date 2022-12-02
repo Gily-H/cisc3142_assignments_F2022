@@ -4,6 +4,7 @@ LAB4_DIR=./lab4/src
 LAB5_DIR=./lab5/src
 LAB7_DIR=./lab7/src
 LAB9_DIR=./lab9/src
+LAB10_DIR=./lab10/src
 
 ####################### LAB 1 #######################
 
@@ -96,12 +97,21 @@ sample: $(LAB7_DIR)/sample.cpp
 
 ####################### LAB 9 #######################
 lab9: $(LAB9_DIR)/weather
-	echo "Starting lab 9"
+	echo "Starting Lab 9"
 	$(LAB9_DIR)/weather
 	make clean_lab9
 
 weather: $(LAB9_DIR)/weather.cpp
 	g++ $(LAB9_DIR)/weather.cpp -o $(LAB9_DIR)/weather
+
+####################### LAB 10 #######################
+lab10: $(LAB10_DIR)/film_algorithms
+	echo "Starting Lab 10"
+	$(LAB10_DIR)/film_algorithms
+	make clean_lab10
+
+film_algorithms: $(LAB10_DIR)/film_algorithms.cpp
+	g++ $(LAB10_DIR)/film_algorithms.cpp -o $(LAB10_DIR)/film_algorithms
 
 # removes all files that are not source files with extension .cpp
 clean_lab1:
@@ -129,10 +139,13 @@ clean_lab8:
 clean_lab9:
 	rm $(LAB9_DIR)/weather
 
+clean_lab10:
+	rm $(LAB10_DIR)/film_algorithms
+
 # phony target removes shell command from output
 .SILENT:
 
-all: lab1 lab2 lab3 lab4 lab5 lab7 lab9
+all: lab1 lab2 lab3 lab4 lab5 lab7 lab9 lab10
 
 # target for running the CI/CD workflow in GitHub actions
 ci_cd_workflow:
@@ -169,6 +182,9 @@ ci_cd_workflow:
 	echo "Starting Lab 9"
 	make weather && $(LAB9_DIR)/weather
 	make clean_lab9
+	echo "Starting Lab 10"
+	make film_algorithms && $(LAB10_DIR)/film_algorithms < $(LAB10_DIR)/input/lab10_input.txt
+	make clean_lab10
 
 ################ GITHUB ACTIONS ################
 cicd_lab1:
@@ -214,3 +230,8 @@ cicd_lab7:
 cicd_lab9:
 	echo "Starting Lab 9"
 	make lab9
+
+cicd_lab10:
+	echo "Starting Lab 10"
+	make film_algorithms && $(LAB10_DIR)/film_algorithms < $(LAB10_DIR)/input/lab10_input.txt
+	make clean_lab10
