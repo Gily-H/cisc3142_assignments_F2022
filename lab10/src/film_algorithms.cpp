@@ -159,6 +159,12 @@ int main() {
   const int number_of_categories = 10; // 10 film categories based on file format
   vector<Film> films;
   vector<string> categories;
+  
+  // out file stream to write output to a file
+  ofstream ofs;
+  ofs.open("./output/lab10_output.txt");
+
+  // in file stream to read from a file
   ifstream ifs;
   ifs.open("./input/film.csv"); // open the input file for reading
 
@@ -177,8 +183,8 @@ int main() {
     getline(ifs, header); // retrieve the second line of the file -- not needed
   }
 
-  cout << "\n===============================================\n" << endl;
-  cout << "Reading film data...\n" << endl;
+  ofs << "\n===============================================\n" << endl;
+  ofs << "Reading film data...\n" << endl;
 
   // loop through rest of the lines of film data in file
   while (ifs.good()) {
@@ -201,25 +207,24 @@ int main() {
 
   ifs.close(); // close the file stream when done reading from file
 
-  cout << "\n===============================================\n" << endl;
+  ofs << "\n===============================================\n" << endl;
 
   // summation of film lengths
   int total_duration = find_total_duration(films);
-  cout << "The total duration of all movies: " << total_duration << " minutes" << endl;
+  ofs << "The total duration of all movies: " << total_duration << " minutes" << endl;
 
-  cout << "\n===============================================\n" << endl;
+  ofs << "\n===============================================\n" << endl;
 
   // sort the films from highest popularity rating to lowest
-  cout << "Sorting the list of films by popularity..." << endl;
-  cout << "------------------------------------------" << endl;
+  ofs << "Sorting the list of films by popularity..." << endl;
+  ofs << "------------------------------------------" << endl;
+
   sort_by_popularity(films);
   Film most_popular_film = films[0];
-  Film least_popular_film = films[films.size() - 1];
   pair<string, int> most_popular(most_popular_film.data["title"], most_popular_film.popularity);
-  pair<string, int> least_popular(least_popular_film.data["title"], least_popular_film.popularity);
-  cout << "Most popular film: " << most_popular.first << ", Rating: " << most_popular.second << endl << "Least popular film: " << least_popular.first << ", Rating: " << least_popular.second << endl;
-
-  cout << "\n===============================================\n" << endl;
+  
+  ofs << "Most popular film: " << most_popular.first << ", Rating: " << most_popular.second << endl;
+  ofs << "\n===============================================\n" << endl;
 
   // search in film data
   string film_category;
@@ -242,14 +247,14 @@ int main() {
 
   } while (found_film.data.empty()); // repeat until match found for desired search value
 
-  cout << "\nFound value: " << value_to_search << ", in category: " << film_category << ", for film: " << endl;
-  cout << "------------------------------------------" << endl;
-  cout << found_film.data["title"] << " (" << found_film.year << ") " << found_film.length << " mins" << endl
+  ofs << "\nFound value: " << value_to_search << ", in category: " << film_category << ", for film: " << endl;
+  ofs << "------------------------------------------" << endl;
+  ofs << found_film.data["title"] << " (" << found_film.year << ") " << found_film.length << " mins" << endl
        << "Directed by " << found_film.data["director"] << endl
        << "Starring" << endl
        << found_film.data["actor"] << " and " << found_film.data["actress"] << endl
        << "Rating: " << found_film.popularity << endl;
-  cout << "\n===============================================\n" << endl;
+  ofs << "\n===============================================\n" << endl;
   
   // compare unqiue release years between action films and comedy films
   bool identical_releases;
@@ -258,8 +263,9 @@ int main() {
     cout << "Action and Comedy films have identical release years";
   }
   
-  cout << "Action and Comedy films do not have identical release years" << endl;
-  cout << "\n===============================================\n" << endl;
+  ofs << "Action and Comedy films do not have identical release years" << endl;
+  ofs << "\n===============================================\n" << endl;
+  ofs.close();
 
   return 0;
 }

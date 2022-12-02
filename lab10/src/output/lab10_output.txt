@@ -1,0 +1,33 @@
+
+===============================================
+
+Reading film data...
+
+
+===============================================
+
+The total duration of all movies: 167446 minutes
+
+===============================================
+
+Sorting the list of films by popularity...
+------------------------------------------
+Most popular film: Final Notice, Rating: 88
+
+===============================================
+
+
+Found value: 1984, in category: year, for film: 
+------------------------------------------
+Romancing the Stone (1984) 106 mins
+Directed by Zemeckis, Robert 
+Starring
+Douglas, Michael and Turner, Kathleen
+Rating: 83
+
+===============================================
+
+Action and Comedy films do not have identical release years
+
+===============================================
+
