@@ -17,6 +17,34 @@ struct Film {
   bool awards;
 };
 
+// helper method to trim the whitespace on both ends of a given word
+string trim(string word) {
+  int left_idx;
+  int right_idx;
+  auto beg_it = word.begin();
+  auto end_it = word.end();
+
+  // find first instance of non-leading whitespace
+  for (int i = 0; i < word.size(); ++i) {
+    if (!isspace(word[i])) {
+      left_idx = i;
+      break;
+    }
+  }
+
+  // find first instance of non-trailing whitespace
+  for (int j = word.size() - 1; j > 0; --j) {
+    if (!isspace(word[j])) {
+      right_idx = j;
+      break;
+    }
+  }
+
+  // return a substring that trims the whitespaces around the given word
+  string trimmed = word.substr(left_idx, (right_idx - left_idx + 1));
+  return trimmed;
+}
+
 // helper method to convert a given word to lower case
 string lower_case(string word) {
   for (auto it = word.begin(); it != word.end(); ++it) {
@@ -162,11 +190,11 @@ int main() {
   
   // out file stream to write output to a file
   ofstream ofs;
-  ofs.open("./output/lab10_output.txt");
+  ofs.open("lab10/src/output/lab10_output.txt");
 
   // in file stream to read from a file
   ifstream ifs;
-  ifs.open("./input/film.csv"); // open the input file for reading
+  ifs.open("lab10/src/input/film.csv"); // open the input file for reading
 
   // go through the first two lines of the file containing column headers
   if (ifs.good()) {
@@ -222,7 +250,7 @@ int main() {
   sort_by_popularity(films);
   Film most_popular_film = films[0];
   pair<string, int> most_popular(most_popular_film.data["title"], most_popular_film.popularity);
-  
+
   ofs << "Most popular film: " << most_popular.first << ", Rating: " << most_popular.second << endl;
   ofs << "\n===============================================\n" << endl;
 
@@ -240,7 +268,10 @@ int main() {
     cout << "\nEnter a value to search:" << endl;
     getline(cin, value_to_search);
 
-    found_film = find_first_occurrence(films, lower_case(film_category), value_to_search);
+    film_category = trim(lower_case(film_category));
+    value_to_search = trim(value_to_search);
+    found_film = find_first_occurrence(films, film_category, value_to_search);
+    
     if (found_film.data.empty()) {
       cout << "\n**Unable to find desired search value. Please try again.**\n" << endl;
     }
