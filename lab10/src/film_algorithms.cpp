@@ -24,18 +24,30 @@ string lower_case(string word) {
       *it = tolower(*it);
     }
   }
-
   return word;
+}
+
+// helper method to return a filler value when a film category is missing data
+string fill_missing_value(string category) {
+  string filler;
+  if (category == "length" || category == "year" || category == "popularity") {
+    filler = "0";
+  } else {
+    filler = "N/A";
+  }
+
+  return filler;
 }
 
 // method to create and return a Film object with given film data
 Film parse_film_data(vector<string> categories, vector<string> film_data) {
   Film film;
+
+  // loop through all film categories and store the k,v pairs
   for (int i = 0; i < categories.size(); ++i) {
-    // loop through all film categories and store the k,v pairs
     string category = categories[i]; // map key
     string category_value = film_data[i]; // map value
-    film.data[category] = category_value;
+    film.data[category] = category_value.empty() ? fill_missing_value(category) : category_value;
   }
 
   // store these category values for convenience and type conversion
@@ -43,8 +55,6 @@ Film parse_film_data(vector<string> categories, vector<string> film_data) {
   film.length = stoi(film.data["length"]);
   film.popularity = stoi(film.data["popularity"]);
   film.awards = film.data["awards"] == "Yes" ? true : false;
-
-  cout << "Title: " << film.data["title"] << ", Rating: " << film.popularity << endl;
 
   return film;
 }
@@ -76,6 +86,7 @@ void sort_by_popularity(vector<Film> &films) {
 // method to find the first occurrence of a given value in the given film category
 Film find_first_occurrence(vector<Film> films, string category, string value) {
   vector<string> values;
+
   // loop through films and collect all values from the given category
   for (Film &film : films) {
     values.push_back(film.data[category]);
@@ -145,17 +156,18 @@ bool compare_unique_release_dates(vector<Film> films) {
 }
 
 int main() {
+  const int number_of_categories = 10; // 10 film categories based on file format
   vector<Film> films;
   vector<string> categories;
   ifstream ifs;
-  ifs.open("./input/test.csv"); // open the input file for reading
+  ifs.open("./input/film.csv"); // open the input file for reading
 
   // go through the first two lines of the file containing column headers
   if (ifs.good()) {
     string header;
 
     // loop through and store the film category headers (in lower case form)
-    for (int i = 0; i < 9; ++i) {
+    for (int i = 1; i < number_of_categories; ++i) {
       getline(ifs, header, ';');
       categories.push_back(lower_case(header)); 
     }
@@ -173,8 +185,8 @@ int main() {
     vector<string> film_data;
     string data;
 
-    // store each category value for the current line of film data
-    for (int i = 0; i < 9; ++i) {
+    // for the current film data line, store each category value
+    for (int i = 1; i < number_of_categories; ++i) {
       getline(ifs, data, ';'); // will split the values by the delimiter
       film_data.push_back(data);
     }
